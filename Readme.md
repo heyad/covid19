@@ -20,7 +20,7 @@ Here is an example of using streamlit to explore and visualise data. Data Loaded
 streamlit run ScotlandCovid19.py 
 ```
 If everything is OK,  your browser will open and load the following page: 
-![png](/covid19_Scotland/figures/output_5_0.png)
+![png](covid19_Scotland/figures/output_5_0.png)
 
 
 
