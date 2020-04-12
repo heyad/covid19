@@ -20,8 +20,13 @@ Here is an example of using streamlit to explore and visualise data. Data Loaded
 streamlit run ScotlandCovid19.py 
 ```
 If everything is OK,  your browser will open and load the following page: 
-![png](covid19_Scotland/figures/output_5_0.png)
+![png](covid19_Scotland/figures/intro.png)
 
+Use the left hand sidebar to explore the data further (i.e. number of daily tests carried in Scotland vs number of confirmed cases of Covid19)
+![png](covid19_Scotland/figures/fig1.png)
+
+You can also view the daily spread across various regions of Scotland within two specific dates. This can be viewed as line/ bar plots 
+![png](covid19_Scotland/figures/fig2.png)
 
 
 
