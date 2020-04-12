@@ -14,11 +14,18 @@ $pip install streamlit
 
 #### Covid19 - Scotland 
 
-Here is an example of using streamlit to explore and visualise data. Data Loaded from [this repo](https://github.com/watty62/Scot_covid19). Thanks to Ian Watt for providing this dataset. Check the [Code](covid19_Scotland/Scotland_Covi19.py). Download and run the code as follows: 
+Here is an example of using streamlit to explore and visualise data. Data Loaded from [this repo](https://github.com/watty62/Scot_covid19). Thanks to Ian Watt for providing this dataset. Easiest way to run it is by using this command from your command line:
+```
+$ streamlit run https://raw.githubusercontent.com/heyad/covid19/master/covid19_Scotland/Scotland_Covi19.py
+```
+
+Alternatively, check the [Code](covid19_Scotland/Scotland_Covi19.py). Download and run the code as follows: 
 
 ```
 streamlit run ScotlandCovid19.py 
 ```
+
+
 If everything is OK,  your browser will open and load the following page: 
 ![png](covid19_Scotland/figures/intro.png)
 
