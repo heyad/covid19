@@ -143,7 +143,7 @@ def plot_totals_today(byDate='01-04-2020',bar = True,line=False):
         #fig.update_yaxes(type="log")
         t_text = 'In Total ' + str(temp['Confirmed'].max()) + ' Confirmed Cases in (Scotland) on '+str(byDate.strftime("%d/%m/%y"))
         fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
-        fig.update_layout(title_text=t_text, title_x=0.5)
+        fig.update_layout(title_text=t_text, title_x=0.5,width=800,height=600)
 
     return (fig)
 
@@ -186,7 +186,7 @@ def plot_regions_u(regions='Grampian',facet_cols=2,bar=False,logs=False,startDat
     title = 'Daily spread across top ' + str(len(regions)) + ' regions ' + 'between '+ str(start_date.strftime("%d/%m/%y")) + ' and '+str(endDate.strftime("%d/%m/%y"))
     fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
     fig.update_xaxes(tickangle=90)
-    fig.update_layout(xaxis_title="Date",yaxis_title="Daily Count")
+    fig.update_layout(xaxis_title="Date",yaxis_title="Daily Count",width=900,height=700)
     fig.update_layout(title_text=title, title_x=0.5)
     return(fig)
 
@@ -252,7 +252,7 @@ def plot_confirmed_tests(date =byDate,bar=True):
         ))
 
     #fig.update_layout(barmode='group')
-    fig.update_layout(template='plotly_white')
+    fig.update_layout(template='plotly_white',width=900,height=700)
     fig.update_layout(title_text="Number of Tests VS Confirmed Cases on "+str(date.strftime("%d/%m/%y")), title_x=0.5)
     return fig
 
