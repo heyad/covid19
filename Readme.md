@@ -12,7 +12,7 @@ This is my first attempt with [Streamlit](https://www.streamlit.io/). It is an o
 $pip install streamlit
 ```
 
-#### Covid19 - Scotland 
+#### Covid19 - Scotland (14th of April)
 
 Here is an example of using streamlit to explore and visualise data. Data Loaded from [this repo](https://github.com/watty62/Scot_covid19). Thanks to Ian Watt for providing this dataset. Easiest way to run it is by using this command from your command line:
 ```
