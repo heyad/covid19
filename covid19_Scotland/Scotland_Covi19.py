@@ -342,6 +342,6 @@ list_regions(10)
 plot_daily_regions_spread(start_date,bar,line)
 plot_daily_tests(byDate,bar)
 
-
+#st.write(tempM)
 #### plot commulative sums 
 
