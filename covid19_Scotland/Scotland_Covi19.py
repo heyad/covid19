@@ -301,7 +301,7 @@ def plot_confirmed_tests(date =date.today(), end_date=end_date_df,bar=True):
         ))
 
     #fig.update_layout(barmode='group')
-    fig.update_layout(template='plotly_white',width=800,height=450)
+    fig.update_layout(template='plotly_white',width=900,height=500)
     fig.update_layout(title_text="Number of Tests VS Confirmed Cases between "+str(date)+
         ' and ' +str(end_date),
      title_x=0.5)
@@ -382,7 +382,8 @@ st.markdown('Total number of confirmed Cases in Scotland is<strong> ' +
     str(np.sum(cases_grouped['Confirmed'])) +'</strong>, number of total deaths <b>'+str(int(n_deaths))
     +'</b> on <strong>' + str(byDate)+
     '</strong> '+
-    '. Data is collected from a [Github Repository](https://github.com/watty62/Scot_covid19]) prepared by Ian Watt.',True)
+    '. Data is collected from a [Github Repository](https://github.com/watty62/Scot_covid19]) prepared by Ian Watt.' + 
+    ' Code of this work is available at [https://github.com/heyad/covid19](https://github.com/heyad/covid19)',True)
 
 
 # sidebar input to control number of regions in the table
