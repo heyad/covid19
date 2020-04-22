@@ -369,6 +369,42 @@ def show_cumm_sums(date = start_date_df,end_date = end_date_df,line=True,bar=Fal
         
     return fig
 
+# pass list of counries, 
+def plot_region_daily(regions='all',cases='Confirmed',
+    startDate=start_date_df,endDate=end_date_df,title='Date',facet_cols=2,bar=False,logs=False):
+    
+    temp = tempM[tempM.Region.isin(regions)].copy()
+    
+    temp['Date'] = pd.to_datetime(temp['Date'])
+    mask = (temp['Date'] >= pd.to_datetime(startDate))&(temp['Date']<= pd.to_datetime(endDate))
+    temp = temp.loc[mask]
+    temp['Date'] = temp['Date'].dt.strftime('%d-%m-%Y')
+
+    temp = temp.groupby(['Date', 'Region'])[cases].sum().reset_index().sort_values(cases, ascending=True)
+    temp['Daily'] = temp[cases].diff()
+    temp.fillna(0,inplace=True)
+
+    if (bar==False):
+        fig = px.line(temp, x="Date", y='Daily', color='Region',  height=400,
+           facet_col='Region', facet_col_wrap=facet_cols,template='plotly_white')
+    else:
+        fig = px.bar(temp, x="Date", y='Daily', color='Region',  height=400,
+           facet_col='Region', facet_col_wrap=facet_cols,template='plotly_white',text=temp['Daily'])
+        fig.update_traces(texttemplate='%{text:.2s}', textposition='auto')
+
+    #fig.update_yaxes(type="log")
+    if (logs==True):
+        fig.update_yaxes(type="log")
+        
+  
+    fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
+    fig.update_xaxes(tickangle=90)
+    fig.update_layout(xaxis_title="Date",yaxis_title="Daily Count")
+    fig.update_layout(xaxis={'tickformat':"%b %d %Y "
+                ,'type':'category'
+    })
+    fig.update_layout(title_text=title, title_x=0.5,width=800,height=500)
+    return(fig)
 
 
 ### Initial Variables 
@@ -432,6 +468,7 @@ def list_regions(n_region=5):
 
 
 
+
 # needs improvement to take the various parameters instead of hard-coding it
 def plot_daily_regions_spread(start_date=start_date_df,end_date=end_date_df,bar=True,line=False):
 
@@ -483,10 +520,15 @@ plot_daily_regions_spread(start_date,end_date,bar,line)
 daily_tests = st.checkbox('Daily Tests - Cases')
 
 plot_daily_tests(start_date,end_date,bar)
-select_region = st.sidebar.checkbox('Select Region')
+select_region = st.checkbox('Select Region')
 if select_region:
-    st.sidebar.selectbox('Select Region', cases_grouped['Region'].to_list())
-#st.write((test_cases['Date'].dtype))
-#list_regions(10)
-#### plot commulative sums 
+    st.markdown('<hr>',True)
+    #covid19_cases = st.sidebar.selectbox('Select Cases',['Confirmed','Deaths','Recovered'])
+    covid19_cases = 'Confirmed'
+    regions = st.sidebar.selectbox('Select Region', cases_grouped['Region'].to_list())
+    fig = plot_region_daily([regions],covid19_cases,start_date,end_date,'Daily confirmed cases of Covid19',5,bar, False)
+    st.plotly_chart(fig)
 
+#plot_region_daily(regions='all',cases='Confirmed',
+    #startDate='2020-1-21',title='Date',facet_cols=2,bar=False,logs=False):
+    
